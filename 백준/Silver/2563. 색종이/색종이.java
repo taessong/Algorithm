@@ -11,7 +11,8 @@ public class Main {
 		int N = Integer.parseInt(br.readLine());
 		int[][] paper = new int[100][100];
 		int result = 0;
-		
+
+		// a,b에서 10칸 뒤까지 1을 넣어준다.
 		for(int i=0; i<N; i++) {
 			st = new StringTokenizer(br.readLine());
 			int a = Integer.parseInt(st.nextToken());
@@ -22,7 +23,8 @@ public class Main {
 				}
 			}
 		}
-		
+
+		// paper 배열에 1이 있다면 result를 1증가 -> 도화지에 색칠된 칸의 개수가 된다.
 		for(int i=0; i<100; i++) {
 			for(int j=0; j<100; j++) {
 				if(paper[i][j] == 1) {
@@ -30,7 +32,6 @@ public class Main {
 				}
 			}
 		}
-		
 		System.out.println(result);
 	}
 }
