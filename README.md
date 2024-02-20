@@ -1,2 +1,4 @@
 # Algorithm
-This is an auto push repository for Baekjoon Online Judge created with [BaekjoonHub](https://github.com/BaekjoonHub/BaekjoonHub).
+### 2024/02/20
+<p>늦은 감이 없지 않아 있지만 매일 잔디 심기 도전😎!!</p>
+<p>2학기 팀선정을 위해 깃허브 예쁘게 꾸며보기 </p>
