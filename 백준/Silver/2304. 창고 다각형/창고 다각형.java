@@ -27,7 +27,7 @@ public class Main {
 				last = L;
 			}
 		}
-		
+		// max값을 기준으로 앞부분은 증가하는 그림이 나와야 함
 		int sum = 0;
 		int height = 0;
 		for(int i=0; i<maxIndex; i++) {
@@ -36,7 +36,7 @@ public class Main {
 			}
 			sum += height;
 		}
-		
+		// 끝에서부터 max값 뒷부분까지 뒤에서부터 오면 똑같이 증가하는 그림이 나와야 함!!
 		int height2 = 0;
 		for(int i=last; i>maxIndex; i--) {
 			if(arr[i] != 0 && arr[i] > height2) {
