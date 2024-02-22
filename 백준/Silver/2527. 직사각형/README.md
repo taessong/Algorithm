@@ -87,6 +87,7 @@
 
 ### 풀이 방법
  <p>a부터 생각하려니 너무 복잡해서 d부터 생각했다. d가 아니라면 else if 와 같이 범위를 좁혀 나갔다!</p>
+ <img width="30%" src="https://github.com/taessong/Algorithm/assets/156993058/e9ba0c1e-cf25-4881-8311-ff30d6d61e12"/>
 
 
 
