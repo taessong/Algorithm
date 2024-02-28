@@ -36,3 +36,5 @@
 
  <p>첫째 줄에 동근이의 위치와 각 상점 사이의 최단 거리의 합을 출력한다.</p>
 
+### 풀이 방법
+![경비원](https://github.com/taessong/Algorithm/assets/156993058/bdf1f0aa-16ee-4627-8dd3-fc94285e5b53)
