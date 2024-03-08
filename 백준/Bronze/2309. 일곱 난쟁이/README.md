@@ -1,4 +1,4 @@
-# [Bronze I] 일곱 난쟁이 - 2309 
+e# [Bronze I] 일곱 난쟁이 - 2309 
 
 [문제 링크](https://www.acmicpc.net/problem/2309) 
 
