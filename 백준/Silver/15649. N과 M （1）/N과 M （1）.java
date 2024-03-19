@@ -43,6 +43,7 @@ public class Main {
 			result[count] = nums[i];
 			perm(count+1);
 			visited[i] = 0;
+			// result배열의 값은 뒤덮히니 원복하지 않아도 됨!
 		}
 	}
 }
