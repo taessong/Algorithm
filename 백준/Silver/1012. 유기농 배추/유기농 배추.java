@@ -61,7 +61,8 @@ public class Main {
 				int nc = y + dc[d];
 				if(nr >= 0 && nr < M && nc >= 0 && nc < N && !visited[nr][nc] && map[nr][nc] == 1) {
 					queue.offer(new int[] {nr, nc});
-					visited[nr][nc] = true;
+					visited[nr][nc] = true; // 방문처리는 큐에 넣을 때 해줘라!!!
+					// 그래야 시간초과, 메모리초과가 나지 않는다!!
 				}
 			}
 		}
