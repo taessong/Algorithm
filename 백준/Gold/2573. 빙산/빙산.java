@@ -9,7 +9,7 @@ public class Main {
 	static int[] dr = {-1, 1, 0, 0}, dc = {0, 0, -1, 1};
 	static int[][] map, copy;
 	static boolean[][] visited;
-	static int R, C, result;
+	static int R, C;
 	
     public static void main(String[] args) throws IOException{
     	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -26,11 +26,11 @@ public class Main {
     			map[r][c] = Integer.parseInt(st.nextToken());
     		}
     	}
-    	
     	System.out.println(iceberg());
 	} // main
 
     public static void melt() {
+    	// 빙산 녹일 때 새롭게 복사 배열 생성
     	copy = new int[R][C];
 
     	for(int r=0; r<R; r++) {
@@ -46,7 +46,7 @@ public class Main {
     			}
     		}
     	}
-    	
+
     	// 한사이클 돈 후의 배열을 원본 배열에 덮어씌우기
     	for(int r=0; r<R; r++) {
     		for(int c=0; c<C; c++) {
@@ -59,27 +59,25 @@ public class Main {
     
     public static int iceberg() {
     	Queue<int[]> queue = new LinkedList<>();
-    	int time = 0;
+    	int time = 0; 
     	
     	while(true) {
-    		melt();
-    		int cnt = 0, sum = 0;
-    		visited = new boolean[R][C];
+    		melt(); // 빙산 한 번 녹여
+    		int zeroCnt = 0, sumIce = 0;
+    		visited = new boolean[R][C]; // 방문 배열 초기화
     		
     		for(int r=0; r<R; r++) {
     			for(int c=0; c<C; c++) {
-    				if(map[r][c] == 0) {
-    					cnt++;
-    					if(cnt == R*C) return 0;
-    				}
+    				if(map[r][c] == 0) zeroCnt++;
     				
-    				if(map[r][c] != 0 && !visited[r][c]) {
+    				else if(!visited[r][c]) { // 0이 아니고 방문하지 않았다면
     					queue.offer(new int[] {r, c});
     					visited[r][c] = true;
     					
     					while(!queue.isEmpty()) {
     						int[] arr = queue.poll();
     						int pr = arr[0], pc = arr[1];
+    						
     						for(int d=0; d<4; d++) {
     							int nr = pr + dr[d], nc = pc + dc[d];
     							if(nr >= 0 && nr < R && nc >= 0 && nc < C 
@@ -89,12 +87,13 @@ public class Main {
     							}
     						}
     					} // while queue
-    					sum++; // 연결된 빙산 탐색 끝내고 개수 1 증가
+    					sumIce++; // 빙산 탐색 끝내고 개수 1개 증가
     				}
     			}
     		}
     		time++;
-    		if(sum >= 2) return time;
+    		if(zeroCnt == R*C) return 0; // 모두 녹았으면 0
+    		else if(sumIce >= 2) return time; // 빙산이 2개 이상으로 나뉘면 time 
     	} // while 
     } // iceberg
 } // class
