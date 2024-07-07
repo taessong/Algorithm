@@ -6,13 +6,13 @@ import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class Main {
-	static int w, h;
+	static int w, h, pr, pc;
 	static int[] person;
 	static char[][] building;
 	static boolean[][] visited;
 	static int[] dr = { -1, 1, 0, 0 }, dc = { 0, 0, -1, 1 };
 	static Queue<int[]> queue;
-	static Queue<int[]> personQueue;
+	static Queue<int[]> q;
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -27,7 +27,8 @@ public class Main {
 			building = new char[h][w];
 			visited = new boolean[h][w];
 			queue = new LinkedList<>();
-			personQueue = new LinkedList<>();
+			q = new LinkedList<>();
+//			System.out.println("w "+w);
 
 			for (int r = 0; r < h; r++) {
 				String str = br.readLine();
@@ -36,21 +37,32 @@ public class Main {
 					if (building[r][c] == '*') {
 						queue.offer(new int[] { r, c });
 						visited[r][c] = true;
-					} 
-					else if (building[r][c] == '@') personQueue.offer(new int[] { r, c });
+					} else if (building[r][c] == '@')
+						q.offer(new int[] { r, c });
 				}
 			}
+
+			int result = 0;
+			result = fire();
+			if (result == 0)
+				sb.append("IMPOSSIBLE" + "\n");
+			else
+				sb.append(result + "\n");
 			
-			int result = fire();
-			if (result == 0) sb.append("IMPOSSIBLE" + "\n");
-			else sb.append(result + "\n");
+//			for(int r=0; r<h; r++) {
+//				for(int c=0; c<w; c++) {
+//					System.out.print(building[r][c]);
+//				}
+//				System.out.println();
+//			}
+			
 		} // for testcase
 		System.out.println(sb);
 	} // main
 
 	public static int fire() {
 		int time = 1;
-		while (!queue.isEmpty() || !personQueue.isEmpty()) {
+		while (!queue.isEmpty() || !q.isEmpty()) {
 			int size = queue.size();
 			for (int i = 0; i < size; i++) {
 				int[] arr = queue.poll();
@@ -63,28 +75,29 @@ public class Main {
 						building[nr][nc] = '*';
 						queue.offer(new int[] { nr, nc });
 						visited[nr][nc] = true;
+//						System.out.println("fire " + nr + " " + nc);
 					}
 				} // for dir
-			} // for queue size
+			} // for queue.size
 
-			int qSize = personQueue.size();
+			int qSize = q.size();
 			for (int i = 0; i < qSize; i++) {
-				int[] p = personQueue.poll();
-				// 경계선에 도달했다면 return time
+				int[] p = q.poll();
+//				System.out.println("p0 "+p[0]);
 				if(p[0] == 0 || p[1] == 0 || p[0] == h-1 || p[1] == w-1) return time;
 				
 				for (int d = 0; d < 4; d++) {
 					int nr = p[0] + dr[d];
 					int nc = p[1] + dc[d];
 					if (nr >= 0 && nr < h && nc >= 0 && nc < w && building[nr][nc] == '.') {
+//						System.out.println("person " + nr + " " + nc);
 						building[nr][nc] = '@';
-						personQueue.offer(new int[] { nr, nc });
+						q.offer(new int[] { nr, nc });
 					}
 				}
-			} // for personQueue size
-			
-			// 사람의 이동이 끝났다면 time + 1
+			} // qsize
 			time++;
+//			System.out.println(time);
 		} // while
 		return 0;
 	} // fire()
