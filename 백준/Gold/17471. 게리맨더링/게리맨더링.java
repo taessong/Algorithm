@@ -61,7 +61,8 @@ public class Main {
                         link++;
                     }
                 }
-
+                // link가 2면 선거구가 2개로 나뉜 것
+                // 1이면 하나의 선거구가 존재하는 것이고, 3 이상이면 나뉘어진 선거구끼리 연결이 되지 않은 상태
                 if(link == 2) min = diff;
             }
             return;
