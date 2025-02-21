@@ -2,19 +2,17 @@ import java.util.*;
 
 class Solution {
     public int solution(int n, int[][] computers) {
-        // 하정수 인스타 삭제해라
         
         boolean[] visited = new boolean[n];
         Queue<Integer> queue = new LinkedList<>();
         int network = 0;
         
-        // queue.offer(0);
         // visited[0] = true;
-        //아하
         
         for(int i = 0; i < n; i++) {
             if(!visited[i]) queue.offer(i);
             
+            // 인접한 네트워크 찾는 while문
             while(!queue.isEmpty()) {
                 int curr = queue.poll();
                 
@@ -28,11 +26,7 @@ class Solution {
                 }
             if(queue.isEmpty()) network++;
             }
-            
-            
-            // network++;
         }
-        
         return network;
     }
 }
