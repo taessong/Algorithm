@@ -25,7 +25,7 @@ class Solution {
                         queue.offer(j);
                     }
                 }
-            if(queue.isEmpty()) network++;
+                if(queue.isEmpty()) network++;
             }
         }
         return network;
