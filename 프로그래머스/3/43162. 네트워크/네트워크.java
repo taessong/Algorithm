@@ -7,7 +7,8 @@ class Solution {
         Queue<Integer> queue = new LinkedList<>();
         int network = 0;
         
-        // visited[0] = true;
+        visited[0] = true;
+        queue.offer(0);
         
         for(int i = 0; i < n; i++) {
             if(!visited[i]) queue.offer(i);
