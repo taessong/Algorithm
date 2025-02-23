@@ -5,10 +5,6 @@ class Solution {
         int[] server = new int[24]; // 서버 증설 개수
         int[] expire = new int[24]; // 서버 만료 시간
         int currServer = 0; // 현재 서버 개수
-        // 서버 증설 개수가 0이 아니고, expire이 0이라면 서버 개수 감소
-        
-        // 서버 증설할 때, server[i + k]에 미리 새롭게 생긴 서버 수를 마이너스 시켜놓는다?
-        // 그리고 server[i] += server[i - 1] 이런식으로..
         
         for(int i = 0; i < 24; i++) {
             // 만료된 서버 삭제
@@ -18,11 +14,17 @@ class Solution {
             if(players[i] < m) continue;
             
             // 새롭게 서버 증설하기
+            // 새롭게 필요한 서버 수
             int needServer = players[i] / m;
+            // 필요한 서버 수가 현재 서버보다 많다면
             if(needServer > currServer) {
+                // 생성해야 하는 서버 개수
                 int newServer = needServer - currServer;
+                // 서버 증설 배열에 저장
                 server[i] = newServer;
+                // 현재 서버 개수 업데이트
                 currServer = needServer;
+                // 서버 만료 시간(k)에 서버 개수 저장
                 if(i + k < 24) expire[i + k] = newServer;
             }
         }
