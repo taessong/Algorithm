@@ -132,5 +132,13 @@
 </ul></li>
 </ul>
 
+### 풀이
+
+<code>Comparator.comparing()</code>을 처음 이용해보았다. <code>sort_by</code>에 맞는 index의 값으로만 오름차순 정렬을 해야 하는데, 하나의 배열에는 4개의 값이 들어있다.
+4개의 원소 값 중, 하나의 값만을 이용해서 정렬하기 위해 <code>Comparator.comparing()</code>에 람다식을 이용해서 값을 정렬한다.
+람다식은 <code>x -> x[sortIdx]</code>로 <code>int[]</code> 배열 안의 특정 인덱스 값 하나를 꺼내서 그것을 정렬 기준으로 삼는다.
+만약, 배열 안에 하나의 원소 값이 존재하고 정렬을 해야 한다면, 단순히 <code>Arrays.sort()</code>를 사용하면 된다. 리스트를 정렬하고 싶다면, <code>List.sort()</code>를 이용하자.
+
+또한, <code>arr.toArray(int[][]::new)</code>는 리스트를 2차원 배열로 만드는 표현이다. 기억해두자.
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
