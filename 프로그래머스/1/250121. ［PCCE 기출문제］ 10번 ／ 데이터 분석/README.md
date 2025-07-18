@@ -139,6 +139,6 @@
 람다식은 <code>x -> x[sortIdx]</code>로 <code>int[]</code> 배열 안의 특정 인덱스 값 하나를 꺼내서 그것을 정렬 기준으로 삼는다.
 만약, 배열 안에 하나의 원소 값이 존재하고 정렬을 해야 한다면, 단순히 <code>Arrays.sort()</code>를 사용하면 된다. 리스트를 정렬하고 싶다면, <code>List.sort()</code>를 이용하자.
 
-또한, <code>arr.toArray(int[][]::new)</code>는 리스트를 2차원 배열로 만드는 표현이다. 기억해두자.
+또한, <code>arr.toArray(int[][]::new)</code>는 2차원 배열과 같은 참조형 타입을 배열로 만들어준다! int[]와 같은 기본형은 <code>int[] arr = list.stream().mapToInt(i -> i).toArray();</code>나 <code>for</code>문을 이용해서 전환하면 된다.
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
